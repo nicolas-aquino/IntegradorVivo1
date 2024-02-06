@@ -18,6 +18,12 @@ public class Localizador {
         this.repoRef = repoRef;
     }
 
+    public Localizador(long id, Cliente client,Repositorio repoRef) {
+        this.id = id;
+        this.client = client;
+        this.reservas = new LinkedList<Reserva>();
+        this.repoRef = repoRef;
+    }
 
     public Localizador(long id, Cliente client) {
         this.id = id;

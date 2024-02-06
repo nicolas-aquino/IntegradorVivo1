@@ -40,7 +40,12 @@ public class Main {
         repo.addLocalizador(localizador.getClient(), localizador);
         repo.addLocalizador(localizador.getClient(), localizador);
 
-        System.out.println(repo.getLocalizadores());
+        for(Localizador loc: repo.getLocalizadoresByCliente(c1)){
+
+            System.out.println(loc.getTotal());
+        }
+
+        otraReserva.esPaqueteCompleto();
 
 
     }
