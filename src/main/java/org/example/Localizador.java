@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Localizador {
 
@@ -30,11 +31,23 @@ public double calcularTotal(){
 
 
 
-    return reservas.stream()
+    double precio =  reservas.stream()
             .flatMap(reserva -> reserva.getProductos().stream())
             .mapToDouble(Producto::getPrecio)
             .sum();
 
+    if(this.getLocalizadoresByCliente(client, repoRef).size()>=2){
+        return precio * 0.95;
+    }
+
+        return precio;
+
+
+}
+
+
+public List<Localizador> getLocalizadoresByCliente(Cliente cliente, Repositorio repo){
+return repo.getLocalizadoresByCliente(cliente);
 
 }
 
