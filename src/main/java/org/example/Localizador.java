@@ -8,11 +8,13 @@ public class Localizador {
     private Cliente client;
     private double total;
     private LinkedList<Reserva> reservas;
+    private Repositorio repoRef;
 
-    public Localizador(long id, Cliente client, LinkedList<Reserva> reservas) {
+    public Localizador(long id, Cliente client, LinkedList<Reserva> reservas, Repositorio repoRef) {
         this.id = id;
         this.client = client;
         this.reservas = reservas;
+        this.repoRef = repoRef;
     }
 
 
@@ -33,7 +35,6 @@ public double calcularTotal(){
             .mapToDouble(Producto::getPrecio)
             .sum();
 
-    if()
 
 }
 
