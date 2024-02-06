@@ -5,7 +5,7 @@ public class Cliente {
     private String nombre;
     private int dni;
 
-    public Cliente(String nombre, int dni){
+    public Cliente(String nombre, int dni) {
         this.nombre = nombre;
         this.dni = dni;
     }
@@ -29,8 +29,8 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente{" +
-                "nombre='" + nombre + '\'' +
-                "dni= "+ dni + '\'' +
+                "Nombre='" + nombre + '\'' +
+                ", DNI=" + dni +
                 '}';
     }
 }

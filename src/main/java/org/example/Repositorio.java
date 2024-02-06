@@ -6,48 +6,41 @@ import java.util.List;
 import java.util.Map;
 
 public class Repositorio {
-    private Map<Cliente, List<Localizador>> localizadores;
+    private Map<Cliente, List<Localizador>> repo;
 
     public Repositorio() {
-        this.localizadores = new HashMap<>();
-    }
-    public Repositorio(Map<Cliente, List<Localizador>> localizadores) {
-        this.localizadores = localizadores;
+        this.repo = new HashMap<>();
     }
 
-    public Map<Cliente, List<Localizador>> getAllLocalizadores() {
-        return localizadores;
+    public Repositorio(Map<Cliente, List<Localizador>> repo) {
+        this.repo = repo;
     }
 
-    public void setLocalizadores(Map<Cliente, List<Localizador>> localizadores) {
-        this.localizadores = localizadores;
+    public Map<Cliente, List<Localizador>> getRepositorio() {
+        return repo;
+    }
+
+    public void setRepositorio(Map<Cliente, List<Localizador>> repo) {
+        this.repo = Repositorio.this.repo;
     }
 
     public void addLocalizador(Cliente cliente, Localizador localizador) {
-        if (localizadores.containsKey(cliente)) {
-            localizadores.get(cliente).add(localizador);
+        if (repo.containsKey(cliente)) {
+            repo.get(cliente).add(localizador);
         } else {
-            localizadores.put(cliente, new ArrayList<>());
-            localizadores.get(cliente).add(localizador);
+            repo.put(cliente, new ArrayList<>());
+            repo.get(cliente).add(localizador);
         }
     }
 
-
-    public List<Localizador> getLocalizadoresByCliente(Cliente cliente){
-
-        if (localizadores.containsKey(cliente)) {
-            List<Localizador> list = new List<Localizador>();
-            list.add( localizadores.get(cliente));
-            return list;
-        }
+    public List<Localizador> getLocalizadoresByCliente(Cliente cliente) {
+        if (repo.containsKey(cliente)) return repo.get(cliente).stream().toList();
 
         return null;
     }
 
     @Override
     public String toString() {
-        return "Repositorio{" +
-                "localizadores=" + localizadores +
-                '}';
+        return "Repositorio{" + "repositorio =" + repo.toString() + '}';
     }
 }

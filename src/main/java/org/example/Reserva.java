@@ -1,6 +1,10 @@
 package org.example;
 
+import org.example.Productos.*;
+
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Set;
 
 public class Reserva {
     private long id;
@@ -25,5 +29,18 @@ public class Reserva {
 
     public void setProductos(LinkedList<Producto> productos) {
         this.productos = productos;
+    }
+
+    public boolean esPaqueteCompleto() {
+        Set<String> setproductos = new HashSet<>();
+
+        productos.stream()
+                .forEach(p -> {
+                    setproductos.add(p.getClass().getSimpleName());
+                });
+
+        //Por ahora solo hay 4 tipos de producto
+        return setproductos.size() == 4;
+
     }
 }

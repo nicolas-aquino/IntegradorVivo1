@@ -19,37 +19,35 @@ public class Localizador {
     }
 
 
-
-
     public Localizador(long id, Cliente client) {
         this.id = id;
         this.client = client;
         this.reservas = new LinkedList<Reserva>();
     }
 
-public double calcularTotal(){
+    public double calcularTotal() {
 
 
+        double precio = reservas.stream()
+                .flatMap(reserva -> reserva.getProductos().stream())
+                .mapToDouble(Producto::getPrecio)
+                .sum();
 
-    double precio =  reservas.stream()
-            .flatMap(reserva -> reserva.getProductos().stream())
-            .mapToDouble(Producto::getPrecio)
-            .sum();
+        if ((this.getLocalizadores()!= null )&&  (this.getLocalizadores().size() >= 2)) {
+            return precio * 0.95;
+        }
 
-    if(this.getLocalizadoresByCliente(client, repoRef).size()>=2){
-        return precio * 0.95;
-    }
+
 
         return precio;
 
 
-}
+    }
 
 
-public List<Localizador> getLocalizadoresByCliente(Cliente cliente, Repositorio repo){
-return repo.getLocalizadoresByCliente(cliente);
-
-}
+    public List<Localizador> getLocalizadores() {
+        return repoRef.getLocalizadoresByCliente(this.client);
+    }
 
     public long getId() {
         return id;
@@ -83,7 +81,12 @@ return repo.getLocalizadoresByCliente(cliente);
         this.reservas = reservas;
     }
 
-    public void addReserva(Reserva reserva){
+    public void addReserva(Reserva reserva) {
         this.reservas.add(reserva);
+    }
+
+    @Override
+    public String toString() {
+        return "Localizador";
     }
 }

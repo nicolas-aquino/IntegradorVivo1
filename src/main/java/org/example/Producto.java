@@ -14,11 +14,11 @@ public abstract class Producto {
         this.id = id;
     }
 
-    public void setPrecio(double precio){
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
-    public double getPrecio(){
+    public double getPrecio() {
         return precio;
     }
 
